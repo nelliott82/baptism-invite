@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --smaller: .75;
+}
+
+.swiper {
+  width: 100%;
+  height: 30rem;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex !important;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+}
+
+.swiper-wrapper {
+  @media (max-width: 768px) {
+    height: auto !important;
+    align-items: center;
+  }
+}
+
+.swiper-slide img {
+  object-fit: cover;
+  @media (max-width: 768px) {
+    max-width: 100% !important;
+  }
+  @media (min-width: 769px) and (max-width: 2500px) {
+    height: 100%;
+  }
+}
+
+td {
+  border: 1px solid black;
+}
+
+.themeFont {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 3vw;
+  color: #777b6a;
+  @media (max-width: 768px) {
+    font-size: 5vw;
+  }
+}
+
+.names {
+  font-family: 'Parisienne', cursive;
+  font-size: 12vw;
+  color: #777b6a;
+  @media (max-width: 768px) {
+    font-size: 20vw;
+  }
+}
+
+#map, #map2 {
+  width: 100%;
+  height: 35vw;
+  @media (max-width: 768px) {
+    width: auto;
+    height: 17vh;
+  }
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 0.5em;
+  text-transform: uppercase;
+  color: #777b6a;
+}
+
+li span {
+  display: block;
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  li {
+    font-size: calc(1.125rem * var(--smaller));
+    width: 50px;
+  }
+
+  li span {
+    font-size: calc(2.375rem * var(--smaller));
+  }
+}
