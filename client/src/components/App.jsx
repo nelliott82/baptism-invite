@@ -73,7 +73,7 @@ const App = () => {
             </>
           }
         </div>
-        <a href='https://dryicons.com/free-icons/church'> Icon by Dryicons </a>
+        <a href='https://dryicons.com/free-icons/church'> Icon byd Dryicons </a>
         <a href='https://www.vecteezy.com/free-vector/line-break'>Line Break Vectors by Vecteezy</a>
       </div>
     </>
