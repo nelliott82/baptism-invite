@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "npx nodemon --watch server server/index.js",
-    "build": "webpack --mode development --watch",
+    "build": "npm install",
     "styling": "npx tailwindcss -i ./client/src/input.css -o ./client/dist/output.css",
     "start": "webpack --mode production && npm run styling && npm run server"
   },
