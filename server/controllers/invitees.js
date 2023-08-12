@@ -14,7 +14,8 @@ module.exports = {
           res.json({
             valid: true,
             name: results[0].name,
-            guests: results[0].guests
+            guests: results[0].guests,
+            language: results[0].language
           });
         } else {
           res.status(200);
