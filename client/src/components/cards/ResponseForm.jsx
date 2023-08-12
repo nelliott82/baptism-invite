@@ -72,6 +72,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
       {!received ?
         <>
           <h1>{text.heading}</h1>
+          <br/>
           <form>
             <table>
               <tbody>
@@ -111,8 +112,9 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
                 </tr>
               </tbody>
             </table>
-            <p className={errorStyling}>{error ? text.error : ''}</p>
+            <br/>
             <input type='submit' className={buttons} onClick={handleSubmit} disabled={disabled} value={text.submitButton}/>
+            <p className={errorStyling}>{error ? text.error : ''}</p>
           </form>
         </>
         :
