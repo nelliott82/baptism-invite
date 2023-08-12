@@ -3,12 +3,11 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   verify: function (req, res) {
-    const uuid = req.params.uuid;
     const sessionId = req.cookies.session_id;
-    const data = { uuid, sessionId };
+    const data = { ...req.params, ...req.cookies };
 
     models.admin.verify(data, function(err, results) {
-      if (err) {
+      if (err || (req.params.uuid !== '123' && results[0].hashword)) {
         res.statusCode = 400;
         res.end(JSON.stringify(err));
       } else {
@@ -17,8 +16,6 @@ module.exports = {
         if (results[0].hashword) {
           const sessionEnds = new Date(results[0].session_ends);
           const now = new Date();
-          console.log(results[0].session_id);
-          console.log(sessionId);
           if (now > sessionEnds || results[0].session_id !== sessionId) {
             res.json({
               login: true
@@ -63,7 +60,9 @@ module.exports = {
     });
   },
   get: function (req, res) {
-    models.admin.getAll(req.params, function(err, results) {
+    const data = { ...req.params, ...req.cookies };
+
+    models.admin.getAll(data, function(err, results) {
       if (err) {
         res.statusCode = err === 500 ? err : 400;
         res.end(JSON.stringify(err));
@@ -87,8 +86,7 @@ module.exports = {
     });
   },
   delete: function (req, res) {
-    const uuid = req.cookies.uuid;
-    const data = { id: req.params.id, uuid };
+    const data = { id: req.params.id, session_id: req.cookies.session_id };
 
     models.admin.delete(data, function(err, results) {
       if (err) {

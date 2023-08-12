@@ -24,7 +24,7 @@ const Navbar = ({ cardDiv }) => {
             <span className='text-lg font-semibold'>ADMIN</span>
           </div>
           <div>
-            <a href='/' className='mr-4'><u>Main Page</u></a>
+            <a href={`/invited/${process.env.UUID}`} className='mr-4'><u>Main Page</u></a>
             <span onClick={handleLogout} className='mr-4 cursor-pointer'><u>Logout</u></span>
           </div>
         </div>

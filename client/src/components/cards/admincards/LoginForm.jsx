@@ -35,7 +35,7 @@ const LoginForm = ({ setLogin, getInvitations, buttons }) => {
           if (err === 'Incorrect Password') {
             setIncorrect('border-4 border-red-700 border-solid');
           } else {
-            // Handle error
+            window.location.assign(`https://www.google.com/`);
           }
         })
     } else {

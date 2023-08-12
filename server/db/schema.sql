@@ -13,7 +13,7 @@ CREATE TABLE `admin`(
   `hashword` TEXT
 );
 
-CREATE TABLE `invitees`(
+CREATE TABLE `baptismInvitees`(
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `uuid` TEXT NOT NULL,
   `name` TEXT NOT NULL,
@@ -23,8 +23,4 @@ CREATE TABLE `invitees`(
   CHECK (`guestsResponse` <= `guests`),
   `attending` BOOLEAN,
   `language` BOOLEAN NOT NULL,
-  `songs` TEXT
 );
-
-
-INSERT INTO admin (`uuid`, `session_ends`, `email`) VALUES ('817ff9b2-e71d-4085-8da7-cbb140fdb53b', '2023-09-28', 'nikkoelliott@gmail.com');

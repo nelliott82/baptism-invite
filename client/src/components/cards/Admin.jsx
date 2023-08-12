@@ -4,7 +4,6 @@ import Navbar from './adminCards/Navbar.jsx';
 import CreateInvite from './adminCards/CreateInvite.jsx';
 import Invitations from './adminCards/Invitations.jsx';
 import Responded from './adminCards/Responded.jsx';
-import Songs from './adminCards/Songs.jsx';
 import axios from 'axios';
 
 const Admin = ({ display, login, setLogin, cardDiv, buttons }) => {
@@ -40,7 +39,6 @@ const Admin = ({ display, login, setLogin, cardDiv, buttons }) => {
           <CreateInvite cardDiv={cardDiv} setInvitations={setInvitations} buttons={buttons} />
           <Invitations cardDiv={cardDiv} invitations={invitations} setInvitations={setInvitations} />
           <Responded cardDiv={cardDiv} invitations={invitations} />
-          <Songs cardDiv={cardDiv} invitations={invitations} />
         </>
       }
     </div>

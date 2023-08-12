@@ -1,18 +1,20 @@
 import React from 'react';
-import Countdown from './Countdown.jsx';
 
-const SaveTheDate = ({ cardDiv }) => {
+const SaveTheDate = ({ cardDiv, text }) => {
 
   return (
     <div className={cardDiv}>
       <div>
-        <p className="themeFont">Save The Date</p>
+        <pre className='themeFontM'>{text.parents}</pre>
         <br/>
-        <p className="names">John & Jane</p>
+        <pre className='themeFont'>{text.heading1}</pre>
+        <pre className='themeFontL'>{text.baptism}</pre>
+        <pre className='themeFont'>{text.heading2}</pre>
         <br/>
-        <p className="themeFont">March 12th, 2024</p>
+        <p className='names'>Ámbar Serene</p>
         <br/>
-        <Countdown/>
+        <p className='themeFont'>{text.date}</p>
+        <br/>
       </div>
     </div>
   )

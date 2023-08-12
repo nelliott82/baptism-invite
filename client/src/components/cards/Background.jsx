@@ -25,7 +25,7 @@ const Background = ({ cardDiv }) => {
 
   return (
     <div id="background" className="absolute inset-0" >
-      <div className="h-[193%] max-md:h-full w-full bg-cover bg-repeat bg-[url('./assets/eucalyptus.jpg')]" style={elementStyle} />
+      <div className="h-[250%] max-md:h-full w-full bg-cover bg-repeat bg-[url('./assets/aquamarine.jpeg')]" style={elementStyle} />
     </div>
   )
 }

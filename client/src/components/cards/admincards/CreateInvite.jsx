@@ -32,6 +32,9 @@ const CreateInvite = ({ cardDiv, setInvitations, buttons }) => {
         })
         .then((response) => {
           setInvitations(response.data);
+          nameRef.current.value = '';
+          contactRef.current.value = '';
+          guestsRef.current.value = '';
         })
         .catch((err) => {
           // Handle error

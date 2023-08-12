@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
+app.use('/admin', express.static(path.join(__dirname, '../client/dist')));
 app.use('/admin/:uuid', express.static(path.join(__dirname, '../client/dist')));
 app.use('/invited/:uuid', express.static(path.join(__dirname, '../client/dist')));
 

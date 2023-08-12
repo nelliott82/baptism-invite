@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Spotify from './Spotify.jsx';
 import axios from 'axios';
 
-const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
+const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
   const [display, setDisplay] = useState('hidden');
   const [error, setError] = useState(false);
   const [guestsArr, setGuestsArr] = useState([]);
@@ -10,10 +9,9 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
   const [guestsError, setGuestsError] = useState('');
   const [attending, setAttending] = useState('-');
   const [attendingError, setAttendingError] = useState('');
-  const [spotify, setSpotify] = useState('-');
   const [received, setReceived] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const nameRef = useRef();
-  const songsRef = useRef();
 
   const errorStyling = 'font-mono text-base max-md:text-sm text-red-600 h-[2rem] max-md:h-[3rem] w-full'
 
@@ -26,22 +24,20 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
       setGuests(e.target.value);
     } else if (e.target.name === 'attending') {
       setAttending(e.target.value);
-    } else if (e.target.name === 'songs') {
-      songsRef.current.value = e.target.value;
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setError(false);
+    setDisabled(true);
     const pathname = window.location.pathname.split('/').filter(x => x);
 
     if (attending !== '-') {
       axios.put('/invitations/invitees', {
         uuid: pathname[1],
         guests,
-        attending: attending === 'true' ? true : false,
-        songs: songsRef.current.value,
+        attending: attending === 'true' ? true : false
       })
         .then((response) => {
           setReceived(true);
@@ -52,9 +48,11 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
           } else {
             setError(true);
           }
+          setDisabled(false);
         });
     } else {
       setAttendingError('border-4 border-red-700 border-solid');
+      setDisabled(false);
     }
   }
 
@@ -73,14 +71,13 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
     <div className={`themeFont ${cardDiv} ${display}`}>
       {!received ?
         <>
-          <h1>Response</h1>
-          {/* <br/> */}
-          <p className={errorStyling}>{error ? 'Oops! Something went wrong. Please try again.' : ''}</p>
+          <h1>{text.heading}</h1>
+          <p className={errorStyling}>{error ? text.error : ''}</p>
           <form>
             <table>
               <tbody>
                 <tr>
-                  <td className='text-left'><label htmlFor='name'>Name:</label></td>
+                  <td className='text-left'><label htmlFor='name'>{text.name}</label></td>
                   <td className='text-left w-full max-md:w-44'>
                     <input name='name'
                            ref={nameRef}
@@ -89,7 +86,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
                   </td>
                 </tr>
                 <tr>
-                  <td className='text-left'><label htmlFor='guests'>Guests:</label></td>
+                  <td className='text-left'><label htmlFor='guests'>{text.guests}</label></td>
                   <td className='text-left w-full max-md:w-44'>
                     <select name='guests'
                             value={guests}
@@ -100,7 +97,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
                   </td>
                 </tr>
                 <tr>
-                  <td className='text-left'><label htmlFor='attending'>Attending:</label></td>
+                  <td className='text-left'><label htmlFor='attending'>{text.attending}</label></td>
                   <td className='text-left w-full max-md:w-44'>
                     <select name='attending'
                             value={attending}
@@ -108,20 +105,18 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation }) => {
                             className={attendingError}
                             required>
                       <option value='-' >-</option>
-                      <option value='true' >Yes</option>
+                      <option value='true' >{text.yes}</option>
                       <option value='false' >No</option>
                     </select>
                   </td>
                 </tr>
-                <Spotify attending={attending} songsRef={songsRef} handleChange={handleChange} buttons={buttons} />
               </tbody>
             </table>
-            <br/>
-            <input type='submit' className={buttons} onClick={handleSubmit}/>
+            <input type='submit' className={buttons} onClick={handleSubmit} disabled={disabled} value={text.submitButton}/>
           </form>
         </>
         :
-        <h1>Thank you!</h1>
+        <h1>{text.thankYou}</h1>
       }
     </div>
   )

@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 module.exports = {
   verify: function (data, callback) {
     db.connection.connect();
-    db.connection.query(`SELECT * FROM admin WHERE uuid = '${data.uuid}'`, null, (err, results) => {
+    db.connection.query(`SELECT * FROM admin WHERE uuid = '${data.uuid}' OR session_id = '${data.session_id}'`, null, (err, results) => {
       if (err) {
         callback(err);
       } else if (!results.length) {
@@ -20,7 +20,7 @@ module.exports = {
     db.connection.connect();
     const email = sqlstring.escape(data.email);
 
-    db.connection.query(`SELECT * FROM admin WHERE email = ${email} AND uuid = '${data.uuid}'`, null, (err, results) => {
+    db.connection.query(`SELECT * FROM admin WHERE email = ${email}`, null, (err, results) => {
       if (err) {
         callback(err);
       } else if (!results.length) {
@@ -34,15 +34,12 @@ module.exports = {
 
         if (hashword) {
           bcrypt.compare(data.password, hashword, function(err, isMatch) {
-            console.log('oops')
-            console.log(isMatch)
             if (isMatch) {
               const update = `UPDATE admin
                               SET session_ends = '${sessionEnds}', session_id = '${sessionId}'
-                              WHERE uuid = '${data.uuid}'`;
+                              WHERE email = ${email}`;
 
               db.connection.query(update, null, (err, results) => {
-                console.log(err)
                 if (err) {
                   callback(err);
                 } else {
@@ -82,7 +79,7 @@ module.exports = {
 
     const update = `UPDATE admin
                     SET session_ends = '${sessionEnds}'
-                    WHERE uuid = '${data.uuid}'`;
+                    WHERE session_id = '${data.session_id}'`;
 
     db.connection.query(update, null, (err, results) => {
       if (err) {
@@ -94,7 +91,8 @@ module.exports = {
   },
   getAll: function (data, callback) {
     db.connection.connect();
-    const getAll = `SELECT * FROM invitees WHERE EXISTS (SELECT * FROM admin WHERE uuid = '${data.uuid}');`
+    const getAll = `SELECT * FROM baptismInvitees
+                    WHERE EXISTS (SELECT * FROM admin WHERE uuid = '${data.uuid}' OR session_id = '${data.session_id}');`
     db.connection.query(getAll, null, (err, results) => {
       if (err) {
         callback(err);
@@ -108,15 +106,15 @@ module.exports = {
     const name = sqlstring.escape(data.name);
     const contact = sqlstring.escape(data.contact);
     const insert_uuid = uuidv4();
-    const insert = `INSERT INTO invitees (uuid, name, contact, guests, language)
+    const insert = `INSERT INTO baptismInvitees (uuid, name, contact, guests, language)
                     SELECT '${insert_uuid}', ${name}, ${contact}, ${data.guests}, ${data.language}
                     FROM dual
-                    WHERE EXISTS (SELECT * FROM admin WHERE uuid = '${data.uuid}')`;
+                    WHERE EXISTS (SELECT * FROM admin WHERE session_id = '${data.session_id}')`;
     db.connection.query(insert, null, (err, results) => {
       if (err) {
         callback(err);
       } else {
-        db.connection.query(`SELECT * FROM invitees`, null, (err, results) => {
+        db.connection.query(`SELECT * FROM baptismInvitees`, null, (err, results) => {
           if (err) {
             callback(err);
           } else {
@@ -129,7 +127,7 @@ module.exports = {
   delete: function (data, callback) {
     db.connection.connect();
 
-    const deletion = `DELETE FROM invitees WHERE id = ${data.id} AND EXISTS (SELECT * FROM admin WHERE uuid = '${data.uuid}')`;
+    const deletion = `DELETE FROM baptismInvitees WHERE id = ${data.id} AND EXISTS (SELECT * FROM admin WHERE session_id = '${data.session_id}')`;
     db.connection.query(deletion, null, (err, results) => {
       if (err) {
         callback(err);
