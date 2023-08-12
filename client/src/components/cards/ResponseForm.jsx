@@ -71,8 +71,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
     <div className={`themeFont ${cardDiv} ${display}`}>
       {!received ?
         <>
-          <h1>{text.heading}</h1>
-          <br/>
+          <h1 className='themeFontM mb-1' >{text.heading}</h1>
           <form>
             <table>
               <tbody>
