@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import LoginForm from './adminCards/LoginForm.jsx';
-import Navbar from './adminCards/Navbar.jsx';
-import CreateInvite from './adminCards/CreateInvite.jsx';
-import Invitations from './adminCards/Invitations.jsx';
-import Responded from './adminCards/Responded.jsx';
+import LoginForm from './admincards/LoginForm.jsx';
+import Navbar from './admincards/Navbar.jsx';
+import CreateInvite from './admincards/CreateInvite.jsx';
+import Invitations from './admincards/Invitations.jsx';
+import Responded from './admincards/Responded.jsx';
 import axios from 'axios';
 
 const Admin = ({ display, login, setLogin, cardDiv, buttons }) => {
