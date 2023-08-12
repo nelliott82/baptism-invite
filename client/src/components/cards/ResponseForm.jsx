@@ -112,6 +112,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
                 </tr>
               </tbody>
             </table>
+            <br/>
             <input type='submit' className={buttons} onClick={handleSubmit} disabled={disabled} value={text.submitButton}/>
           </form>
         </>

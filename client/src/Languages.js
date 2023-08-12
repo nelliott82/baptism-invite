@@ -37,7 +37,8 @@ module.exports = {
       attending: 'Attending:',
       yes: 'Yes',
       submitButton: 'Submit',
-      thankYou: 'Thank you!'
+      thankYou: 'Thank you!',
+      error: 'Oops! Something went wrong. Please try again.'
     },
     Invitation: {
       message: 'Hey! You are invited to Ámbar\'s baptism! Please go to this link to see the information and scroll to the bottom to respond!\n'
@@ -81,7 +82,8 @@ module.exports = {
       attending: 'Asistirán:',
       yes: 'Si',
       submitButton: 'Enviar',
-      thankYou: 'Gracias por formar parte de este día tan especial!'
+      thankYou: 'Gracias por formar parte de este día tan especial!',
+      error: '¡Ups! Algo salió mal. Inténtalo de nuevo.'
     },
     Invitation: {
       message: 'Con mucha alegría, te invitamos a que formes parte de nuestra boda 👰🏻‍♀️🤵🏻🎉\nEn el link vas a encontrar toda la información 😉\n\n*Confírmanos tu asistencia* lo antes posible ✅\nY no te olvides de darnos las sugerencias de *que temas poner para bailar* esa noche! 🪩💃🏻🕺🏻🪩\n\n'
