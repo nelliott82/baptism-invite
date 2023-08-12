@@ -51,6 +51,7 @@ const App = () => {
               setInvited(true);
               setInvitation(response.data);
               setLoading(false);
+              console.log(response.data.language)
               if (response.data.language) {
                 setLanguage(Languages.English);
               }
@@ -77,10 +78,11 @@ const App = () => {
               {access ?
                 <>
                   <Admin display={display}
-                        login={login}
-                        setLogin={setLogin}
-                        cardDiv={adminCardDiv}
-                        buttons={buttons} />
+                         login={login}
+                         setLogin={setLogin}
+                         text={language.Invitation}
+                         cardDiv={adminCardDiv}
+                         buttons={buttons} />
                 </>
               :
                 <>

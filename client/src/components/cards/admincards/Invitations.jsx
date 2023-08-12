@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-const Invitations = ({ cardDiv, invitations, setInvitations }) => {
+const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
   const columnClass = 'text-left w-[28rem] max-md:w-44';
 
   const handleDelete = (e, id) => {
@@ -33,7 +33,7 @@ const Invitations = ({ cardDiv, invitations, setInvitations }) => {
        </thead>
        <tbody>
         {invitations.map((x, i) => {
-          let whatsAppMessage = `Hey! You are invited to our wedding! Please go to this link to see the information and scroll to the bottom to respond! ${window.location.host}/invited/${x.uuid}`
+          let whatsAppMessage = `${text.message}https://${window.location.host}/invited/${x.uuid}`
 
           return (
             <tr key={x.uuid}>
