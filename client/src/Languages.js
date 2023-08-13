@@ -28,7 +28,7 @@ module.exports = {
       locationButton: 'Location',
       when: 'When: 4:00 PM',
       calendarButton: 'Add to Calendar',
-      calendarLink: 'https://calndr.link/e/mbcGiCD8mz?s=google'
+      calendarLink: 'https://calndr.link/e/e0LuBO9EWa?s=google'
     },
     ResponseForm: {
       heading: 'Response',
@@ -71,9 +71,9 @@ module.exports = {
       heading: 'Ceremonia Religiosa',
       where: 'Vicaría Castrense de Asunción',
       locationButton: 'Ver ubicación',
-      when: '14:00 HS',
+      when: '16:00 HS',
       calendarButton: 'Agregar al Calendario',
-      calendarLink: 'https://calndr.link/e/BNh91DxG0u?s=google'
+      calendarLink: 'https://calndr.link/e/oO9gEY2Kt5?s=google'
     },
     ResponseForm: {
       heading: 'Confirmación de asistencia',
@@ -86,7 +86,7 @@ module.exports = {
       error: '¡Ups! Algo salió mal. Inténtalo de nuevo.'
     },
     Invitation: {
-      message: 'Con mucha alegría, te invitamos a que formes parte de nuestra boda 👰🏻‍♀️🤵🏻🎉\nEn el link vas a encontrar toda la información 😉\n\n*Confírmanos tu asistencia* lo antes posible ✅\nY no te olvides de darnos las sugerencias de *que temas poner para bailar* esa noche! 🪩💃🏻🕺🏻🪩\n\n'
+      message: 'Te invitamos al bautismo de Ámbar. Toda la información esta en el siguente link. 👶🏻💦⛪️\n'
     }
   }
 }
