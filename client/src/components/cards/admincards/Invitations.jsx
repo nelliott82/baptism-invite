@@ -52,6 +52,19 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
             </tr>
           )
         })}
+        <tr>
+          <td/>
+          <td className={columnClass}>Total Invited:</td>
+          <td className={columnClass}>
+            {filteredInvites.reduce((accum, x) => {
+              accum = accum + parseInt(x.guests);
+              return accum;
+            }, 0)}
+          </td>
+          <td/>
+          <td/>
+          <td/>
+        </tr>
        </tbody>
       </table>
     </div>
