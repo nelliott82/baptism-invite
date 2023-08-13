@@ -66,7 +66,7 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
               <td className={columnClass}>{x.contact}</td>
               <td className={columnClass}>{x.guests}</td>
               <td className={columnClass}>
-                <a href={`https://wa.me/${x.contact}/?text=${encodeURIComponent(whatsAppMessage)}`} target='_blank'>
+                <a href={`https://api.whatsapp.com/send/?phone=${x.contact}&text=${encodeURIComponent(whatsAppMessage)}`} target='_blank'>
                   <u>Link</u>
                 </a>
               </td>
