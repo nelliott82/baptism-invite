@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Languages from '../../../Languages.js';
 import axios from 'axios';
 
-const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
+const Invitations = ({ cardDiv, invitations, setInvitations }) => {
   const [filteredInvites, setFilteredInvites] = useState([]);
   const [filter, setFilter] = useState('all');
   const columnClass = 'text-left w-[28rem] max-md:w-44';
@@ -58,13 +59,13 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
        </thead>
        <tbody>
         {filteredInvites.map((x, i) => {
-          let message;
+          let text;
           if (x.language) {
-            message = text.message;
+            text = Languages.English.Invitation.message;
           } else {
-            message = text.message;
+            text = Languages.Spanish.Invitation.message;
           }
-          const whatsAppMessage = `${message}https://${window.location.host}/invited/${x.uuid}`
+          const whatsAppMessage = `${text}https://${window.location.host}/invited/${x.uuid}`
 
           return (
             <tr key={x.uuid}>

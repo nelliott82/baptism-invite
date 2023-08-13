@@ -82,7 +82,6 @@ const App = () => {
                   <Admin display={display}
                          login={login}
                          setLogin={setLogin}
-                         text={language.Invitation}
                          cardDiv={adminCardDiv}
                          buttons={buttons} />
                 </>
