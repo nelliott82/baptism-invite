@@ -58,7 +58,13 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
        </thead>
        <tbody>
         {filteredInvites.map((x, i) => {
-          let whatsAppMessage = `${text.message}https://${window.location.host}/invited/${x.uuid}`
+          let message;
+          if (x.language) {
+            message = text.message;
+          } else {
+            message = text.message;
+          }
+          const whatsAppMessage = `${message}https://${window.location.host}/invited/${x.uuid}`
 
           return (
             <tr key={x.uuid}>
