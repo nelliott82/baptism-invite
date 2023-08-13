@@ -77,7 +77,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
               <tbody>
                 <tr>
                   <td className='text-left'><label htmlFor='name'>{text.name}</label></td>
-                  <td className='text-left w-full max-md:w-44'>
+                  <td className='text-left w-full'>
                     <input name='name'
                            ref={nameRef}
                            readOnly
@@ -86,7 +86,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
                 </tr>
                 <tr>
                   <td className='text-left'><label htmlFor='guests'>{text.guests}</label></td>
-                  <td className='text-left w-full max-md:w-44'>
+                  <td className='text-left w-full'>
                     <select name='guests'
                             value={guests}
                             className={guestsError}
@@ -97,7 +97,7 @@ const ResponseForm = ({ cardDiv, buttons, invited, invitation, text }) => {
                 </tr>
                 <tr>
                   <td className='text-left'><label htmlFor='attending'>{text.attending}</label></td>
-                  <td className='text-left w-full max-md:w-44'>
+                  <td className='text-left w-full'>
                     <select name='attending'
                             value={attending}
                             onChange={handleChange}
