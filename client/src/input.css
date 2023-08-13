@@ -67,6 +67,15 @@ td {
   }
 }
 
+.loadingFont {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 3vw;
+  color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 5vw;
+  }
+}
+
 .names {
   font-family: 'Parisienne', cursive;
   font-size: 12vw;

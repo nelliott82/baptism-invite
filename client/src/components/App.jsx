@@ -55,6 +55,8 @@ const App = () => {
               if (response.data.language) {
                 setLanguage(Languages.English);
               }
+            } else {
+              window.location.assign(`https://www.google.com/`);
             }
           })
           .catch((err) => {
