@@ -48,7 +48,7 @@ const App = () => {
         axios.get(`/invitations/invitees/${pathname[1]}`)
           .then((response) => {
             if (response.data.valid) {
-              setInvited(true);
+              !response.data.attending && setInvited(true);
               setInvitation(response.data);
               setLoading(false);
               console.log(response.data.language)

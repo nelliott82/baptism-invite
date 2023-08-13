@@ -15,7 +15,8 @@ module.exports = {
             valid: true,
             name: results[0].name,
             guests: results[0].guests,
-            language: results[0].language
+            language: results[0].language,
+            attending: results[0].attending
           });
         } else {
           res.status(200);
