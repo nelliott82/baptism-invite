@@ -2,7 +2,22 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
+  const [filteredInvites, setFilteredInvites] = useState([]);
+  const [filter, setFilter] = useState('all');
   const columnClass = 'text-left w-[28rem] max-md:w-44';
+
+  const handleFilter = (e) => {
+
+    if (e.target.value === 'all') {
+      setFilteredInvites(invitations);
+    } else if (e.target.value === 'yes') {
+      setFilteredInvites(invitations.filter(x => x.attending));
+    } else {
+      setFilteredInvites(invitations.filter(x => x.attending === null));
+    }
+
+    setFilter(e.target.value);
+  }
 
   const handleDelete = (e, id) => {
     e.preventDefault();
@@ -17,9 +32,19 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
       })
   }
 
+  useEffect(() => {
+    handleFilter({ target: { value: filter }});
+  }, [invitations]);
+
   return (
     <div className={cardDiv}>
       <h1>Invitations</h1>
+      <label htmlFor='filter'>Filter:</label>
+      <select onChange={handleFilter}>
+        <option value='all' >All</option>
+        <option value='yes' >Yes</option>
+        <option value='no' >No</option>
+      </select>
       <table>
        <thead>
         <tr>
@@ -32,7 +57,7 @@ const Invitations = ({ cardDiv, invitations, setInvitations, text }) => {
         </tr>
        </thead>
        <tbody>
-        {invitations.map((x, i) => {
+        {filteredInvites.map((x, i) => {
           let whatsAppMessage = `${text.message}https://${window.location.host}/invited/${x.uuid}`
 
           return (
