@@ -68,7 +68,7 @@ module.exports = {
       }
     },
     Baptism: {
-      heading: 'Ceremonia Religiosa',
+      heading: 'Iglesia del Bautismo',
       where: 'Vicaría Castrense de Asunción',
       locationButton: 'Ver ubicación',
       when: '16:00 HS',
